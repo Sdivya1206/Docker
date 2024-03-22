@@ -1,0 +1,19 @@
+version:  "3.8"
+
+services: 
+   frontendimg:  
+     build:  /root/Three_tier_docker_compose/frontend
+     container_name : Frontend
+     ports :
+       - "80:80"
+     network_mode: 
+      bridge
+   backendimg:
+     build: /root/Three_tier_docker_compose/Backend
+     container_name: backend
+     depends_on: 
+          - "frontendimg"
+     ports: 
+       - "8080:8080"
+     network_mode: 
+      bridge
